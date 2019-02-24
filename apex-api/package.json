@@ -1,0 +1,25 @@
+{
+  "name": "apex-api",
+  "version": "1.0.0",
+  "description": "A simple wrapper to get stats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guysmow/apex-api.git"
+  },
+  "author": "guysmow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guysmow/apex-api/issues"
+  },
+  "homepage": "https://github.com/Guysmow/apex-api#readme",
+  "keywords": [
+    "api", "apex", "tracker"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  }
+}
