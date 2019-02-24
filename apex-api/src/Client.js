@@ -29,21 +29,23 @@ class Client {
         if (platform === 'PC') { nbr = 5; }
         if (platform === 'XBOX') { nbr = 1; }
         if (platform === 'PSN') { nbr = 2; }
-
+        if(nbr == undefined) {          return reject(new TypeError(`[APEX-API] Platforms must be PC, XBOX or PSN`));        }
+      
         const result = await fetch(`${URL}/${nbr}/${username}`, this.headers);
         const data = await result.json();
 
         // Invalid API Key
-        if (data.message === 'Invalid authentication credentials') { reject(new Error(`[APEX-API] ${data.message}`)); }
+        if (data.message === 'Invalid authentication credentials') { reject(new Error(`[APEX-API] Invalid API-Key`)); }
 
         // Handling Player Not Found error
-        if (data.error === 'Player Not Found') {
-          return reject({ code: 404, error: data.error });
-        }
+        if (data.errors[0].message == 'Account not found. Please try again.') {
+          return reject(new TypeError(`[APEX-API] Account not found`));        }
         // Handling any other error
         else if (data.error) { return reject(data); }
 
-        resolve(data.data);
+
+        resolve(data);
+
     });
   }
 };
