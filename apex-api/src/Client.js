@@ -35,7 +35,8 @@ class Client {
           .then(response =>{
             resolve(response) // REPONSE
           }).catch(error =>{
-            reject(error.toString); // REJECT ERROR 
+            reject(error.toString()); // REJECT ERROR
+            //Edit Docta : I am stupid, toString is a function, not an object ! 
             // A améliorer ! 
           });
     });
