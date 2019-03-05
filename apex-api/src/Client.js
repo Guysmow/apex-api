@@ -35,11 +35,52 @@ class Client {
           .then(response =>{
             resolve(response) // REPONSE
           }).catch(error =>{
-            reject(error.toString); // REJECT ERROR 
+            reject(error.toString()); // REJECT ERROR 
             // A améliorer ! 
           });
     });
   }
+  weaponInfo(category){
+    return new Promise((resolve, reject) => {
+
+      fetch(`http://apex-api.tk/api/v1/weapons?name=${category}`)
+      .then(res => res.json()) // FORMATING TO JSON
+      .then(response =>{
+        resolve(response) // REPONSE
+      }).catch(error =>{
+        reject(error.toString()); // REJECT ERROR 
+        // A améliorer ! 
+      });
+    })
+  }
+
+  legendInfo(legend){
+    return new Promise((resolve, reject) => {
+
+      fetch(`http://apex-api.tk/api/v1/legends?name=${legend}`)
+      .then(res => res.json()) // FORMATING TO JSON
+      .then(response =>{
+        resolve(response) // REPONSE
+      }).catch(error =>{
+        reject(error.toString()); // REJECT ERROR 
+        // A améliorer ! 
+      });
+    })
+      }
+
+      legendUsage(){
+        return new Promise((resolve, reject) => {
+
+        fetch('http://apex-api.tk/api/v1/legendsUsage')
+        .then(res => res.json()) // FORMATING TO JSON
+        .then(response =>{
+          resolve(response) // REPONSE
+        }).catch(error =>{
+          reject(error.toString()); // REJECT ERROR 
+          // A améliorer ! 
+        });
+      })
+      }
 };
 
 module.exports = Client;
